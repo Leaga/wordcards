@@ -1,0 +1,45 @@
+<h2>Cards</h2>
+
+<div id="container">
+  <div class="cards">
+    <%= will_paginate @cards %>
+    <div class="pagination">
+      <% @cards.each do |card| %>
+          <div class="card-thumb" onmouseover="$(this).find('img').toggle();$(this).find('a').toggle();" onmouseout="$(this).find('img').toggle();$(this).find('a').toggle();">
+
+            <%= link_to_unless_current card.word, card, {style: "display:none"} %>
+            <%= image_tag card.image_src %>
+            <!--<div class="card-thumbnail">-->
+            <!--< %= link_to card.word, card %>-->
+            <!--</div>-->
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
+  <div class="menu">
+    <%= link_to 'New Card', new_card_path %>
+    <br/>
+    <%= link_to 'Schedule my card tweets', tweet_push_cards_path(), remote: true, method: :post %>
+    <span id="tweet_result"></span>
+
+    <br/>
+    <br/>
+    <a href="https://twitter.com/gowordcards" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow
+      @gowordcards</a>
+    <script>
+        !function(d, s, id) {
+        var js,fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");
+    </script>
+  </div>
+
+</div>

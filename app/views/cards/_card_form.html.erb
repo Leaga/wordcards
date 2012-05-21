@@ -1,0 +1,52 @@
+<%= form_for(@card) do |f| %>
+    <% if @card.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@card.errors.count, "error") %> prohibited this tempo from being saved:</h2>
+
+          <ul>
+            <% @card.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :word %><br />
+      <%= f.text_field :word %>
+      <input type="button" value="Lookup" onclick="lookup($('#card_word').val())" />
+
+    </div>
+    <div class="field">
+      <%= f.label :translation %><br />
+      <%= f.text_field :translation %>
+    </div>
+    <div class="field">
+      <%= f.label :definition %><br />
+      <%= f.text_area :definition, :size => "60x10" %>
+    </div>
+    <div class="field">
+      <%= f.label :example %><br />
+      <%= f.text_area :example, :size => "60x10" %>
+    </div>
+
+    <!--<div class="field">-->
+      <!--< %= f.label :tags %><br />-->
+      <!--< %= f.text_field :tags %>-->
+    <!--</div>-->
+    <div class="field">
+      <%= f.label :image_src, "Choose an image for card"%><br />
+      <%= f.text_field :image_src %>
+      <div id="google-images-content"></div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+<% end %>
+
+
+
+
+

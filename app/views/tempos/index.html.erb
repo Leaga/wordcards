@@ -1,0 +1,25 @@
+<h1>Listing tempos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tempos.each do |tempo| %>
+  <tr>
+    <td><%= tempo.name %></td>
+    <td><%= tempo.count %></td>
+    <td><%= link_to 'Show', tempo %></td>
+    <td><%= link_to 'Edit', edit_tempo_path(tempo) %></td>
+    <td><%= link_to 'Destroy', tempo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tempo', new_tempo_path %>

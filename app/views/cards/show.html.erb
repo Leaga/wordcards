@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="card">
+  <p>
+    <%= label(@card, :word) %>:
+  <pre><%= @card.word %></pre>
+  </p>
+
+  <p>
+    <%= label(@card, :translation) %>:
+  <pre><%= @card.translation %></pre>
+  </p>
+
+  <p>
+    <%= label(@card, :definition) %>:
+  <pre><%= @card.definition %></pre>
+  </p>
+
+  <p>
+    <%= label(@card, :example) %>:
+  <pre><%= @card.example %></pre>
+  </p>
+
+  <p>
+    <%= label(@card, :image_src,  "Image") %>:
+  <pre><%= image_tag @card.image_src %></pre>
+  </p>
+</div>
+
+<%= link_to 'Edit', edit_card_path(@card) %> | <%= link_to 'Destroy', @card, confirm: 'Are you sure?', method: :delete %>
+<br/>
+<%= link_to 'Back', cards_path %>
+

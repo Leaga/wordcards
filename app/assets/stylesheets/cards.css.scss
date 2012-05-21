@@ -1,0 +1,36 @@
+// Place all the styles related to the card controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+label {
+  font-weight: bold;
+}
+
+.card {
+  width: 550px;
+}
+
+.card-thumb {
+    margin: 10px;
+    padding: 10px;
+    height: 140px;
+    width: 135px;
+    float: left;
+    border: 1px solid;
+}
+
+div.card-thumb img{
+    display: block;
+    margin: 0 auto;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    heigth: 100%;
+}
+.cards {
+  width: 80%;
+}
+

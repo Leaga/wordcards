@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @tempo.name %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%= @tempo.count %>
+</p>
+
+
+<%= link_to 'Edit', edit_tempo_path(@tempo) %> |
+<%= link_to 'Back', tempos_path %>
