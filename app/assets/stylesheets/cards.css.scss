@@ -2,26 +2,69 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+*{
+font-family: Comic Sans MS, sans-serif;
+color: #787871;
+
+}
+
 label {
   font-weight: bold;
+  text-shadow: 1px 1px 1px #fff;
+  font-family: Comic Sans MS, cursive, sans-serif;
+
 }
 
-.card {
-  width: 550px;
-}
+/*.card {*/
+  /*width: 550px;*/
+/*}*/
 
-.card-thumb {
+div.card-thumb {
     margin: 10px;
     padding: 10px;
-    height: 140px;
-    width: 135px;
+    width: 240px;
+    height: 180px;
     float: left;
-    border: 1px solid;
+    overflow: hidden;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+div.back{
+background-color:red;
 }
 
-div.card-thumb img{
-    display: block;
-    margin: 0 auto;
+/*.picture{*/
+/*position: relative;*/
+/*overflow: hidden;*/
+/*}*/
+.picture img{
+    border: 1px solid #939598;
+    margin: 5px auto;
+    width: 240px;
+    height: 140px;
+    /*overflow: hidden;*/
+    /*position: absolute;*/
+}
+
+.google-image{
+    max-height: 180px;
+    width: 240px;
+}
+
+
+.word{
+    cursor: pointer;
+    text-align: center;
+    /*position: relative;*/
+    /*bottom: 15%;*/
+    background: url(card-hover.png) repeat-x scroll 0 0 transparent;
+    font: normal 16px Tahoma, Arial;
+    text-transform: uppercase;
+}
+a{
+    text-decoration:none;
+
 }
 
 .menu {
@@ -32,5 +75,46 @@ div.card-thumb img{
 }
 .cards {
   width: 80%;
+}
+
+
+input[type="text"], textarea{
+width: 350px;
+padding: 8px 8px;
+font-size: 14px;
+color: #89897e;
+border: 1px solid #e5e5dd;
+background: #FAFAFA;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+}
+
+input[type="button"], input[type="submit"] {
+margin-right: 10px;
+padding: 8px 15px;
+text-transform: uppercase;
+line-height: 1;
+border: none;
+background-color: #EDEDED;
+font-weight: bold;
+cursor: pointer;
+text-shadow: 1px 1px 1px #fff;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+-o-border-radius: 8px;
+border-radius: 8px;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+}
+
+.form{
+    /*width: 80%;*/
+    margin: 0 auto;
 }
 

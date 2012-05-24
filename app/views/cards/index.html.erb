@@ -1,21 +1,65 @@
+<script type="text/javascript" src="assets/jquery.js"></script>
+<script type="text/javascript" src="assets/rotate3Di/jquery-css-transform.js"></script>
+<script type="text/javascript" src="assets/rotate3Di/rotate3Di.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      function mySideChange(front) {
+        if (front) {
+            $(this).parent().find('div.front').show();
+            $(this).parent().find('div.back').hide();
+
+        } else {
+            $(this).parent().find('div.front').hide();
+            $(this).parent().find('div.back').show();
+        }
+    }
+      $("article.card").hover(
+
+              function() {
+                  $(this).find("div").stop().rotate3Di('flip', 250,{direction: 'clockwise', sideChange: mySideChange});
+              }
+              ,
+              function() {
+                  $(this).find("div").stop().rotate3Di('unflip', 500, {sideChange: mySideChange});
+              }
+      )
+
+
+});
+
+</script>
+
 <h2>Cards</h2>
 
 <div id="container">
-  <div class="cards">
+  <section class="cards">
     <%= will_paginate @cards %>
-    <div class="pagination">
+    <!--<div class="pagination">-->
       <% @cards.each do |card| %>
-          <div class="card-thumb" onmouseover="$(this).find('img').toggle();$(this).find('a').toggle();" onmouseout="$(this).find('img').toggle();$(this).find('a').toggle();">
+        <article class="card">
+          <div class="card-thumb front">
+            <div class="picture">
+              <%= image_tag card.image_src %>
+            </div>
 
-            <%= link_to_unless_current card.word, card, {style: "display:none"} %>
-            <%= image_tag card.image_src %>
-            <!--<div class="card-thumbnail">-->
-            <!--< %= link_to card.word, card %>-->
-            <!--</div>-->
+            <div class="word">
+              <%= link_to_unless_current card.word, card %>
+            </div>
+
           </div>
+
+          <div class="card-thumb back" style="display: none;">
+            <div class="word">
+              <%= link_to_unless_current card.translation, card %>
+            </div>
+          </div>
+        </article>
+
+
+
       <% end %>
-    </div>
-  </div>
+    <!--</div>-->
+  </section>
 
 
 
@@ -27,8 +71,8 @@
 
     <br/>
     <br/>
-    <a href="https://twitter.com/gowordcards" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow
-      @gowordcards</a>
+    <a href="https://twitter.com/gowordcards" class="twitter-follow-button" data-show-count="false" data-size="large"
+       data-show-screen-name="false">Follow@gowordcards</a>
     <script>
         !function(d, s, id) {
         var js,fjs = d.getElementsByTagName(s)[0];

@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_for(@card) do |f| %>
     <% if @card.errors.any? %>
         <div id="error_explanation">
@@ -14,7 +15,7 @@
     <div class="field">
       <%= f.label :word %><br />
       <%= f.text_field :word %>
-      <input type="button" value="Lookup" onclick="lookup($('#card_word').val())" />
+      <input type="button" value="Lookup" id="lookup-button" onclick="lookup($('#card_word').val())" />
 
     </div>
     <div class="field">
@@ -35,7 +36,7 @@
       <!--< %= f.text_field :tags %>-->
     <!--</div>-->
     <div class="field">
-      <%= f.label :image_src, "Choose an image for card"%><br />
+      <%= f.label :image_src, "Enter image url or choose an image provided below"%><br />
       <%= f.text_field :image_src %>
       <div id="google-images-content"></div>
     </div>
@@ -46,7 +47,7 @@
 
 <% end %>
 
-
+</div>
 
 
 

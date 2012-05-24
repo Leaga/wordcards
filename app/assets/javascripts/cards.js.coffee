@@ -3,8 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #= require google_jsapi
 
-
-
 google.load('search', '1')
 count = 0
 lastImage = ''
@@ -31,7 +29,7 @@ lookupTranslation = (word, resultContainer) ->
   if lastImage
     transformImage(lastImage, "none")
 #    $(lastImage).attr("name", "")
-  transformImage(image, "scale(1.5) rotate(-2deg)" )
+  transformImage(image, "scale(1.1) rotate(-2deg)" )
 #  $(image).attr("name", "card[image_src]")
   $("#card_image_src").val($(image).attr("src"))
   console.log($("#card_image_src").val());
@@ -57,16 +55,20 @@ printSearch = (result, contentDiv) ->
   count = count + 1
   newImg = document.createElement('img')
   newImg.setAttribute('id', 'google-image-'+count)
-  newImg.src = result.tbUrl
+  newImg.setAttribute('class', 'google-image')
+#  newImg.src = result.tbUrl
+  newImg.src = result.url
   newImg.setAttribute('onclick', 'addImageLinkToWord(this);')
   contentDiv.appendChild(newImg)
 
 lookupImages = (word) ->
   imageSearch = new google.search.ImageSearch()
 #  TODO comment out restrictions later
-#  imageSearch.setRestriction(
+  imageSearch.setRestriction(
+    google.search.ImageSearch.IMAGESIZE_MEDIUM
 #      google.search.ImageSearch.RESTRICT_RIGHTS,
-#      google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION)
+#      google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION
+  )
   imageSearch.setSearchCompleteCallback(this, searchComplete, [imageSearch])
   imageSearch.execute(word)
 
@@ -77,6 +79,21 @@ lookupService = (url, word, resultContainer) ->
     dataType: "json",
     success: (data) -> $(resultContainer).val(data.result)
   });
+
+
+$ ->
+  $("div.field input#card_word").live "keyup", (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(e.keyCode)
+    if e.keyCode == 13
+      $("div.field input#lookup-button").click()
+      console.log("click!")
+
+#  $("article.card-thumb").click ->
+#    $(this).rotate3Di('flip', 500)
+#    $(this).find("div").stop().rotate3Di('flip', 250);
+
 
 
 

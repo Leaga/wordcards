@@ -15,7 +15,9 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(params[:card])
-    puts "@@@@@@@@@@@@#{params[:card]}"
+    puts "lalalalal #{@card.image_src}"
+    @card.image_src = 'no-icon.png' if params[:card][:image_src].empty?
+    puts "lblblblbl #{@card.image_src }  empty?=#{params[:card][:image_src].empty?}"
     result = @card.save
     result || (render(action: :new) && return)
     redirect_to @card, notice: "Word card was successfully created"
